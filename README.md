@@ -1,2 +1,1 @@
-# dnekkanti.github.io
-Personal Site
+# Divya Nekkanti
