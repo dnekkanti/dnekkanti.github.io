@@ -9,7 +9,7 @@ import Head from "next/head";
 import { Notifications } from "@mantine/notifications";
 import getDivyaNekkantiTheme from "@/styles/theme";
 
-const primaryFont = "Nunito, sans-serif";
+const primaryFont = "Outfit, sans-serif";
 const theme = createTheme(getDivyaNekkantiTheme(primaryFont));
 
 export default function App({ Component, pageProps }: any) {

@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.iconBox {
+  background-color: #f8f9fa;
+  padding: 8px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #eee;
+  color: #495057;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  line-height: 1.6;
+}

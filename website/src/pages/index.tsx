@@ -1,40 +1,53 @@
+import { useState } from "react";
 import {
-  Anchor,
+  Box,
   Container,
-  Divider,
-  Group,
-  Stack,
   Text,
-  Title,
 } from "@mantine/core";
-import Link from "next/link";
+import { WorkSection } from "@/components/sections/WorkSection";
+import { ResumeSection } from "@/components/sections/ResumeSection";
+import { ContactSection } from "@/components/sections/ContactSection";
+import { HeaderSection } from "@/components/sections/HeaderSection";
+import { IntroSection } from "@/components/sections/IntroSection";
+import classes from "@/styles/Home.module.css";
 
 export default function Index() {
+  const handleScroll = (e: React.MouseEvent<any>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 100; // Account for sticky navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      
+      // Update hash without jump
+      window.history.pushState(null, "", `#${id}`);
+    }
+  };
+
   return (
-    <Container size="md">
-      <Stack gap="lg" mt="xl">
-        <Title ta="center" fw={400} order={1}>
-          Welcome to My Personal Website
-        </Title>
+    <Box className={classes.root}>
+      <HeaderSection 
+        handleScroll={handleScroll} 
+      />
 
-        <Divider />
+      <IntroSection handleScroll={handleScroll} />
 
-        <Text ta="center" size="lg">
-          This is boilerplate for my personal website.
+      {/* Sections */}
+      <WorkSection />
+      <ResumeSection />
+      <ContactSection />
 
-          I will fill this out with my own content eventually...
+      <Box py="xl" style={{ textAlign: 'center' }}>
+        <Text size="xs" c="dimmed">
+          © {new Date().getFullYear()} Divya Nekkanti. Built with Mantine & Next.js.
         </Text>
-
-        <Text ta="center" size="md" c="dimmed">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur dolores distinctio itaque deleniti. Sed commodi, itaque vero magnam natus a quia vel corporis eius ipsam, dolorem exercitationem inventore molestiae cum.
-        </Text>
-
-        <Group justify="center" mt="xl">
-          <Anchor component={Link} href="/resume">Resume</Anchor>
-          <Anchor component={Link} href="/projects">Projects</Anchor>
-          <Anchor component={Link} href="/contact">Contact</Anchor>
-        </Group>
-      </Stack>
-    </Container>
+      </Box>
+    </Box>
   );
 }

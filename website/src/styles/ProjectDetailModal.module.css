@@ -1,0 +1,148 @@
+.header {
+  margin-bottom: var(--mantine-spacing-xl);
+}
+
+.title {
+  color: #111111;
+  font-weight: 800;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.subheader {
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  margin-top: 8px;
+}
+
+
+.description {
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  max-width: 800px;
+}
+
+.glassBadge {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  color: #111111;
+  font-weight: 700;
+  height: 36px;
+  padding-inline: 18px;
+  font-size: 0.9rem;
+  text-transform: none;
+}
+
+.inlineBadge {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  color: #111111;
+  font-weight: 600;
+  height: 28px;
+  padding-inline: 12px;
+  font-size: 0.8rem;
+  text-transform: none;
+}
+
+.metaBadge {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  color: #495057;
+  font-weight: 600;
+  height: 32px;
+  padding-inline: 16px;
+  font-size: 0.875rem;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+.closeButton {
+  font-size: 1.25rem;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 8px;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background-color: #f3f4f6;
+  color: #111111;
+}
+
+.tagBadge {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  color: #495057;
+  font-weight: 500;
+  height: 30px;
+  padding-inline: 12px;
+  font-size: 0.8rem;
+  text-transform: none;
+  transition: all 0.2s ease;
+}
+
+.tagBadge:hover {
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.mediaContainer {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa;
+}
+
+.photoFrame {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.videoFrame {
+  border: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.actionButton {
+  height: 40px;
+  padding-inline: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.actionButton:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.githubButton {
+  background-color: #111111;
+}
+
+.githubButton:hover {
+  background-color: #000000;
+}
+
+.sectionTitle {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: #111111;
+  margin-bottom: var(--mantine-spacing-md);
+}
