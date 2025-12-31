@@ -1,6 +1,5 @@
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
-import "@mantine/core/styles.css";
 import "@/styles/styles.css";
 
 import { MantineProvider, createTheme } from "@mantine/core";
@@ -21,6 +20,7 @@ export default function App({ Component, pageProps }: any) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
         />
+        <link rel="shortcut icon" href="/images/favicon.png" />
       </Head>
       <Notifications autoClose={4000} position="top-center" />
       

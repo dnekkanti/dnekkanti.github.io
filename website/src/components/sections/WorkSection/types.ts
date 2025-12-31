@@ -1,37 +1,26 @@
-export type ProjectType = "Code" | "Photo" | "Video" | "Writing";
+export enum ProjectType {
+  Code = "Code",
+  Photo = "Photo",
+  Video = "Video",
+  Writing = "Writing",
+}
 
-export type ProjectCategory = "Paintings" | "Code" | "Video" | "Writing";
+export enum ProjectCategory {
+  Code = "Code",
+  Paintings = "Paintings",
+  Video = "Video",
+  Writing = "Writing",
+}
 
-interface BaseProject {
+export interface Project {
+  type: ProjectType;
   title: string;
   category: ProjectCategory;
   year: string;
   description: string;
   tags: string[];
-  image: string;
+  image: string; // Used for card thumbnail and photo display
   longDescription?: string;
   screenshots?: string[];
   externalUrl?: string;
 }
-
-export interface CodeProject extends BaseProject {
-  type: "Code";
-  githubUrl?: string;
-}
-
-export interface PhotoProject extends BaseProject {
-  type: "Photo";
-  portfolioUrl?: string;
-}
-
-export interface VideoProject extends BaseProject {
-  type: "Video";
-  videoUrl: string;
-}
-
-export interface WritingProject extends BaseProject {
-  type: "Writing";
-  articleUrl?: string;
-}
-
-export type Project = CodeProject | PhotoProject | VideoProject | WritingProject;

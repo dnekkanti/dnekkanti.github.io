@@ -1,6 +1,5 @@
 .root {
   min-height: 100vh;
-  padding-bottom: 2rem;
 }
 
 .navbar {
@@ -45,18 +44,6 @@
     gap: 2rem;
     padding-top: 4rem;
   }
-}
-
-.titleBadge {
-  background: #f0f0f0;
-  color: #666;
-  padding: 0.5rem 1rem;
-  border-radius: 100px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 500;
 }
 
 .mainTitle {
@@ -121,72 +108,34 @@
 }
 
 .previewCard {
-  background: #f0f0f0;
-  border-radius: 3rem;
-  padding: 0.75rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+  background: white;
+  border-radius: 2.5rem;
+  padding: 1rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  border: 1.5px solid #f0f0f0;
   position: relative;
   overflow: hidden;
-  height: 100%;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.previewCard:hover {
-  transform: scale(1.01);
-}
-
-.previewInner {
-  background: #fafafa;
-  border-radius: 2.5rem;
-  padding: 2rem;
-  min-height: 650px;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-}
-
-.avatarArea {
-  flex: 1;
-  background: white;
-  border-radius: 1.5rem;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 2rem;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #f0f0f0;
+  width: 100%;
+}
+
+.previewCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
 }
 
 .avatarImage {
   width: 100%;
-  height: 100%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
+  border-radius: 1.8rem;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  margin: 0 !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
 }
 
 .previewCard:hover .avatarImage {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
-.statusSection {
-  background: white;
-  padding: 1.25rem;
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-  margin-top: auto;
-  border: 1px solid #f0f0f0;
-}
-
-.tipBox {
-  margin-top: 1rem;
-  padding: 1.25rem;
-  background: white;
-  border-radius: 1rem;
-  border: 1px solid #f0f0f0;
-  color: #888;
-  font-size: 0.9rem;
-}

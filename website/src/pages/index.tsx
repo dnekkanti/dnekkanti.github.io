@@ -7,11 +7,14 @@ import {
 import { WorkSection } from "@/components/sections/WorkSection";
 import { ResumeSection } from "@/components/sections/ResumeSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { FooterSection } from "@/components/sections/FooterSection";
 import { HeaderSection } from "@/components/sections/HeaderSection";
 import { IntroSection } from "@/components/sections/IntroSection";
 import classes from "@/styles/Home.module.css";
 
 export default function Index() {
+  const [activeCategory, setActiveCategory] = useState("All");
+
   const handleScroll = (e: React.MouseEvent<any>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
@@ -36,18 +39,19 @@ export default function Index() {
         handleScroll={handleScroll} 
       />
 
-      <IntroSection handleScroll={handleScroll} />
+      <IntroSection 
+        handleScroll={handleScroll} 
+        onCategoryChange={setActiveCategory}
+      />
 
       {/* Sections */}
-      <WorkSection />
+      <WorkSection 
+        activeCategory={activeCategory}
+        onCategoryChange={setActiveCategory}
+      />
       <ResumeSection />
       <ContactSection />
-
-      <Box py="xl" style={{ textAlign: 'center' }}>
-        <Text size="xs" c="dimmed">
-          © {new Date().getFullYear()} Divya Nekkanti. Built with Mantine & Next.js.
-        </Text>
-      </Box>
+      <FooterSection handleScroll={handleScroll} />
     </Box>
   );
 }

@@ -13,9 +13,10 @@ import classes from "@/styles/Home.module.css";
 
 interface IntroSectionProps {
   handleScroll: (e: React.MouseEvent<any>, id: string) => void;
+  onCategoryChange: (category: string) => void;
 }
 
-export function IntroSection({ handleScroll }: IntroSectionProps) {
+export function IntroSection({ handleScroll, onCategoryChange }: IntroSectionProps) {
   return (
     <Container size="xl">
       <div className={classes.heroSection}>
@@ -73,7 +74,10 @@ export function IntroSection({ handleScroll }: IntroSectionProps) {
             <Anchor 
               href="#work" 
               style={{ textDecoration: 'none', color: 'inherit' }}
-              onClick={(e) => handleScroll(e, "work")}
+              onClick={(e) => {
+                onCategoryChange("Paintings");
+                handleScroll(e, "work");
+              }}
             >
               <div className={classes.miniCard}>
                 <Group gap="xs" mb={8}>
@@ -91,7 +95,10 @@ export function IntroSection({ handleScroll }: IntroSectionProps) {
             <Anchor 
               href="#work" 
               style={{ textDecoration: 'none', color: 'inherit' }}
-              onClick={(e) => handleScroll(e, "work")}
+              onClick={(e) => {
+                onCategoryChange("Writing");
+                handleScroll(e, "work");
+              }}
             >
               <div className={classes.miniCard}>
                 <Group gap="xs" mb={8}>
@@ -109,7 +116,10 @@ export function IntroSection({ handleScroll }: IntroSectionProps) {
             <Anchor 
               href="#work" 
               style={{ textDecoration: 'none', color: 'inherit' }}
-              onClick={(e) => handleScroll(e, "work")}
+              onClick={(e) => {
+                onCategoryChange("Code");
+                handleScroll(e, "work");
+              }}
             >
               <div className={classes.miniCard}>
                 <Group gap="xs" mb={8}>
@@ -128,15 +138,11 @@ export function IntroSection({ handleScroll }: IntroSectionProps) {
 
         {/* Right Column - Preview Card */}
         <div className={classes.previewCard}>
-          <div className={classes.previewInner}>
-            <div className={classes.avatarArea}>
-              <img
-                src="/images/avatar.png"
-                alt="Divya Nekkanti"
-                className={classes.avatarImage}
-              />
-            </div>
-          </div>
+          <img
+            src="/images/Divya2.jpeg"
+            alt="Divya Nekkanti"
+            className={classes.avatarImage}
+          />
         </div>
       </div>
     </Container>

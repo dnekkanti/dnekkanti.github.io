@@ -9,8 +9,12 @@ import { projects } from "./data";
 import { Project } from "./types";
 import classes from "@/styles/WorkSection.module.css";
 
-export function WorkSection() {
-  const [activeCategory, setActiveCategory] = useState("All");
+interface WorkSectionProps {
+  activeCategory: string;
+  onCategoryChange: (category: string) => void;
+}
+
+export function WorkSection({ activeCategory, onCategoryChange }: WorkSectionProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [opened, { open, close }] = useDisclosure(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -54,7 +58,7 @@ export function WorkSection() {
 
         <WorkFilters
           activeCategory={activeCategory}
-          onCategoryChange={setActiveCategory}
+          onCategoryChange={onCategoryChange}
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
         />

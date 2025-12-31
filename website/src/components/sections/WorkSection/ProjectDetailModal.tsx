@@ -20,7 +20,7 @@ import {
   IconPhoto,
   IconVideo,
 } from "@tabler/icons-react";
-import { Project } from "./types";
+import { Project, ProjectType } from "./types";
 import classes from "@/styles/ProjectDetailModal.module.css";
 
 interface ProjectDetailModalProps {
@@ -33,12 +33,12 @@ export function ProjectDetailModal({ project, opened, onClose }: ProjectDetailMo
   if (!project) return null;
 
   const renderMedia = () => {
-    if (project.type === "Video") {
+    if (project.type === ProjectType.Video && project.externalUrl) {
       return (
         <Box className={classes.mediaContainer}>
           <AspectRatio ratio={16 / 9}>
             <iframe
-              src={project.videoUrl}
+              src={project.externalUrl}
               title={project.title}
               className={classes.videoFrame}
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -49,7 +49,8 @@ export function ProjectDetailModal({ project, opened, onClose }: ProjectDetailMo
       );
     }
 
-    if (project.type === "Writing") {
+
+    if (project.type === ProjectType.Writing) {
       return null;
     }
 
@@ -70,11 +71,13 @@ export function ProjectDetailModal({ project, opened, onClose }: ProjectDetailMo
   };
 
   const renderHeaderActions = () => {
-    if (project.type === "Code" && project.githubUrl) {
+    if (!project.externalUrl && project.type !== ProjectType.Video) return null;
+
+    if (project.type === ProjectType.Code) {
       return (
         <Button
           component="a"
-          href={project.githubUrl}
+          href={project.externalUrl}
           target="_blank"
           leftSection={<IconBrandGithub size={20} />}
           variant="filled"
@@ -86,11 +89,11 @@ export function ProjectDetailModal({ project, opened, onClose }: ProjectDetailMo
       );
     }
 
-    if (project.type === "Photo" && project.portfolioUrl) {
+    if (project.type === ProjectType.Photo) {
       return (
         <Button
           component="a"
-          href={project.portfolioUrl}
+          href={project.externalUrl}
           target="_blank"
           leftSection={<IconPhoto size={20} />}
           variant="filled"
@@ -102,30 +105,29 @@ export function ProjectDetailModal({ project, opened, onClose }: ProjectDetailMo
       );
     }
 
-    if (project.type === "Video") {
-      const href = project.externalUrl || project.videoUrl;
-      const isExternal = !!project.externalUrl;
+    if (project.type === ProjectType.Video) {
+      if (!project.externalUrl) return null;
       
       return (
         <Button
           component="a"
-          href={href}
+          href={project.externalUrl}
           target="_blank"
-          leftSection={isExternal ? <IconExternalLink size={20} /> : <IconVideo size={20} />}
-          variant={isExternal ? "outline" : "filled"}
-          color={isExternal ? "gray" : "red"}
+          leftSection={<IconVideo size={20} />}
+          variant="filled"
+          color="red"
           className={classes.actionButton}
         >
-          {isExternal ? "Visit Site" : "Watch Video"}
+          Watch Video
         </Button>
       );
     }
 
-    if (project.type === "Writing" && project.articleUrl) {
+    if (project.type === ProjectType.Writing) {
       return (
         <Button
           component="a"
-          href={project.articleUrl}
+          href={project.externalUrl}
           target="_blank"
           leftSection={<IconExternalLink size={20} />}
           variant="filled"
@@ -139,6 +141,8 @@ export function ProjectDetailModal({ project, opened, onClose }: ProjectDetailMo
 
     return null;
   };
+
+
 
   return (
     <Modal
@@ -196,7 +200,7 @@ export function ProjectDetailModal({ project, opened, onClose }: ProjectDetailMo
 
         {renderMedia()}
 
-        {project.type !== "Writing" && project.screenshots && project.screenshots.length > 0 && (
+        {project.type !== ProjectType.Writing && project.screenshots && project.screenshots.length > 0 && (
           <Stack gap="xl">
             <Title order={3} className={classes.sectionTitle}>Project Detail Views</Title>
             <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="xl">
